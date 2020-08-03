@@ -1,0 +1,12 @@
+extends layout.pug
+
+block content
+    h1 #{brand} Account Management!
+    if number
+        p You have verified your identity using the phone number #{number} and are now permitted to make changes to your account.
+        a(href="cancel")
+            button.ghost-button(type="button") Cancel
+    else
+        p Please verify your account to make changes to your settings.
+        a(href="authenticate")
+            button.ghost-button(type="button") Verify me
