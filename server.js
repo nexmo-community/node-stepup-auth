@@ -37,6 +37,8 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'pug');
 
+// Add your routes here
+
 app.get('/', (req, res) => {
 	/*
     If there is a session for the user, the `index.html`
