@@ -1,4 +1,4 @@
-# Using the Verify API for Step-up Authentication
+# Using Node.js and the Verify API for Step-up Authentication
 
 This repo contains the example code for our [tutorial](https://developer.nexmo.com/verify/tutorials/step-up-authentication/introduction/node) on using the Vonage Verify API to authenticate a user by their mobile phone number. It is written in Node.js using the Express framework.
 
