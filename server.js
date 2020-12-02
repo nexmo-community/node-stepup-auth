@@ -5,16 +5,16 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const app = express();
-const Nexmo = require('nexmo');
+const Vonage = require('@vonage/server-sdk');
 
-const NEXMO_API_KEY = process.env.NEXMO_API_KEY;
-const NEXMO_API_SECRET = process.env.NEXMO_API_SECRET;
-const NEXMO_BRAND_NAME = process.env.NEXMO_BRAND_NAME;
+const VONAGE_API_KEY = process.env.VONAGE_API_KEY;
+const VONAGE_API_SECRET = process.env.VONAGE_API_SECRET;
+const VONAGE_BRAND_NAME = process.env.VONAGE_BRAND_NAME;
 
-const nexmo = new Nexmo(
+const vonage = new Vonage(
 	{
-		apiKey: NEXMO_API_KEY,
-		apiSecret: NEXMO_API_SECRET,
+		apiKey: VONAGE_API_KEY,
+		apiSecret: VONAGE_API_SECRET,
 	},
 	{
 		debug: true,
@@ -47,12 +47,12 @@ app.get('/', (req, res) => {
   */
 	if (!req.session.user) {
 		res.render('index', {
-			brand: NEXMO_BRAND_NAME,
+			brand: VONAGE_BRAND_NAME,
 		});
 	} else {
 		res.render('index', {
 			number: req.session.user.number,
-			brand: NEXMO_BRAND_NAME,
+			brand: VONAGE_BRAND_NAME,
 		});
 	}
 });
@@ -64,10 +64,10 @@ app.get('/authenticate', (req, res) => {
 app.post('/verify', (req, res) => {
 	// Start the verification process
 	verifyRequestNumber = req.body.number;
-	nexmo.verify.request(
+	vonage.verify.request(
 		{
 			number: verifyRequestNumber,
-			brand: NEXMO_BRAND_NAME,
+			brand: VONAGE_BRAND_NAME,
 		},
 		(err, result) => {
 			if (err) {
@@ -87,7 +87,7 @@ app.post('/verify', (req, res) => {
 
 app.post('/check-code', (req, res) => {
 	// Check the code provided by the user
-	nexmo.verify.check(
+	vonage.verify.check(
 		{
 			request_id: verifyRequestId,
 			code: req.body.code,
