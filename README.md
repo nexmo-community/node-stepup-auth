@@ -14,8 +14,8 @@ cd node-stepup-auth && npm install
 Once installed, copy the `.env-example` file to `.env` in the application's root directory. Enter your API key and secret from the [Developer Dashboard](https://dashboard.nexmo.com) and also a name for your application which will appear on the home page and also in the `from` field of any SMS sent via the Verify API.
 
 ```
-VONAGE_API_KEY=YOUR NEXMO API KEY
-VONAGE_API_SECRET=YOUR NEXMO API SECRET
+VONAGE_API_KEY=YOUR VONAGE API KEY
+VONAGE_API_SECRET=YOUR VONAGE API SECRET
 VONAGE_BRAND_NAME=UP TO 11 ALPHANUMERIC CHARACTERS
 ```
 ## Running the application
